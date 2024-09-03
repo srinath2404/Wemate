@@ -1,0 +1,92 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    font-family: 'Abel';
+    background-color: #333;
+    color: #ffffff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.0em;
+    font-family:'Abel';
+}
+
+nav {
+    display: flex;
+}
+main{
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.main{
+    width: 80%;
+    padding: 20px 20px 20px 20px ;
+}
+.hostel{
+    display: flex;
+    margin-top: 40px;
+}
+
+.hostel img{
+    width: 200px;
+    margin-left: 400px;
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+}
+.re{
+    max-height: 150px;
+    float: right;
+    position:static;
+}
+.hostel li{
+    list-style: none;
+}
+.hostel img{
+    width: 200px;
+    margin-top: 30px;
+}
+.hostel .text{
+    align-items: center;
+}
+.button{
+    background-color: yellow;
+}
+
+.ratings{
+    width: 100px;
+    display: flex;
+    margin-bottom: 10px;
+    background-image:cover;
+}
+/* .cards{
+    box-shadow: 2px black;
+} */
+

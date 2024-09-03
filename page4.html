@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Booking Page</title>
+  <link rel="stylesheet" href="page3.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Hostel Booking Page</h1>
+    <form id="bookingForm">
+      <label for="hostel">Select Hostel:</label>
+      <select id="hostel" name="hostel">
+        <option value="hostel1">Hostel 1</option>
+        <option value="hostel2">Hostel 2</option>
+        <!-- Add more hostels dynamically if needed -->
+      </select><br><br>
+      
+      <label for="room">Select Room:</label>
+      <select id="room" name="room">
+        <option value="single">Single Room</option>
+        <option value="double">Double Room</option>
+        <!-- Add more room types dynamically if needed -->
+      </select><br><br>
+      
+      <label for="startDate">Check-in Date:</label>
+      <input type="date" id="startDate" name="startDate" required><br><br>
+      
+      <label for="endDate">Check-out Date:</label>
+      <input type="date" id="endDate" name="endDate" required><br><br>
+      
+      <label for="guestName">Your Name:</label>
+      <input type="text" id="guestName" name="guestName" required><br><br>
+
+      <label for="guestName">Your Aadhaar:</label>
+      <input type="number" id="guestName" name="guestName" required><br><br>
+      
+      <label for="guestName">Phone Number:</label>
+      <input type="number" id="guestName" name="guestName" required><br><br>
+      
+      <label for="guestEmail">Your Email:</label>
+      <input type="email" id="guestEmail" name="guestEmail" required><br><br>
+      
+      <button type="submit">Book Now</button>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script src="page3.js">
+    document.getElementById('bookingForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const hostelId = document.getElementById('hostel').value;
+      const roomId = document.getElementById('room').value;
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const guestName = document.getElementById('guestName').value;
+      const guestEmail = document.getElementById('guestEmail').value;
+
+      try {
+        const response = await fetch('/api/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Replace with your token management logic
+          },
+          body: JSON.stringify({
+            hostelId,
+            roomId,
+            startDate,
+            endDate,
+            guestName,
+            guestEmail
+          })
+        });
+        const data = await response.json();
+        document.getElementById('message').innerHTML = `<p>${data.message}</p>`;
+        // Optionally clear form inputs or show a success message to the user
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('message').innerHTML = `<p>Failed to book hostel. Please try again later.</p>`;
+      }
+    });
+
+  </script>
+</body>
+</html>
